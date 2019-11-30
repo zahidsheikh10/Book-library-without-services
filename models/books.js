@@ -11,8 +11,8 @@ const bookSchema = new Schema({
     author: {
         type: String
     },
-    read: {
-        type: Boolean
+    description:{
+        type:String
     }
 });
 const Books = mongoose.model('Books', bookSchema);

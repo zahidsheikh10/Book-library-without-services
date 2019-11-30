@@ -1,7 +1,8 @@
 const express = require('express');
-const debug = require('debug')('app:adminRoutes');
+const debug = require('debug')('app:bookRoutes');
 const bookRouter = express.Router();
 const bookController = require('../controllers/bookController');
+
 
 function router(nav) {
 

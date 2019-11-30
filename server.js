@@ -45,33 +45,10 @@ const nav = [
     {link: '/author',title: 'Authors' }
 ];
 
-
-
-// Serving a static html file
-app.get('/index',(req,res) => {
-    res.sendFile(path.join(__dirname,'views/index.html'));
-});
-
-// render a pug file
-app.get('/pug', (req, res) => {
-    res.render('index.pug',{
-        heading:'Book Library App',
-        list:['a','b']
-    });
-});
-
-//render a ejs file
-app.get('/ejs',(req,res)=>{
-    res.render('indexEjs.ejs', {
-        heading: 'Book Library App',
-        list: ['a', 'b']
-    });
-});
-
 //render a bootstrap template file
 app.get('/', (req, res) => {
     res.render('bookHome', {
-        title: 'My App',
+        title: 'Book Library',
         heading: 'Book Library App',
         nav: [
             {
@@ -95,6 +72,11 @@ app.use('/auth', authRouter);
 //Routes for books
 const bookRouter = require('./src/routes/bookRoutes')(nav);
 app.use('/books',bookRouter);
+
+//Routes for Author
+const authorRouter = require('./src/routes/authorRoutes')(nav);
+app.use('/author', authorRouter);
+
 
 //Routes for admin inserting books
 const adminRouter = require('./src/routes/adminRoutes')(nav);

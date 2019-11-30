@@ -1,4 +1,5 @@
 let Books = require('../../models/books');
+const debug = require('debug')('app:bookController');
 const express = require('express');
 
 
@@ -15,17 +16,21 @@ function bookController(nav) {
             ))
             .catch(error => res.status(400).json('Error:' + error))
     }
-   async function getById(req, res){ 
+   function getById(req, res){ 
         Books.findById(req.params.id)
-            .then(book => res.render(
-                'bookView',
-                {
-                    nav,
-                    title: 'Library',
-                    book: book
-                })
-            )
+            .then( book => {
+                res.render(
+                    'bookView',
+                    {
+                        nav,
+                        title: 'Library',
+                        book: book,
+                        bookDetails: book.details
+                    }
+                )
+            })
             .catch(error => res.status(400).json('Error:' + error))
+        
     }
     function middleWare(req, res, next) {
         if (req.user) {

@@ -28,25 +28,24 @@
                         <a href=<%=nav[i].link%>><%=nav[i].title%></a>
                     </li>
                     <%}%>
-                    <li>
-                        <a href="/auth/logout">Log Out</a>
-                    </li> 
                  </ul>
             </nav>
         </div>
     </header>
     <main>
-        <section class="profile-section">
+        <section class="author-introduction">
             <div class="container">
-                <div class="row">
-                    <div class="row">
-                        <div class="col-md-12  text-left">
-                            <h1>User Details are below</h1>
-                            <p>User Name:<%=user.username%></p>
-                            <p></p>User Password:<%=user.password%></p>
+                <h1>The Authors Present in the website are shown below</h1>
+                <div class="panel-body">
+                    <% for(let i= 0; i< books.length; i++){%>
+                        <div class="row">
+                            <div class="col-xs-9">
+                                <h4>
+                                    <span><%=books[i].author%></span>
+                                </h4>
+                            </div>
                         </div>
-                    </div>
-                    <!--/col-12-->
+                    <%}%>
                 </div>
             </div>
         </section>
@@ -65,9 +64,9 @@
             </div>
         </section>
     </main>
-
     <!-- script references -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
 </body>
+
 </html>
